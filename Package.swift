@@ -1,5 +1,8 @@
 import PackageDescription
 
 let package = Package(
-    name: "RxRunner"
+    name: "RxRunner",
+    dependencies: [
+        .Package(url: "https://github.com/ReactiveX/RxSwift.git", majorVersion: 3)
+    ]
 )
