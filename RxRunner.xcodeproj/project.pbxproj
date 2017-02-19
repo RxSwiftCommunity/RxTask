@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3A58B81E5944540073C276 /* Runner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3A58B71E5944540073C276 /* Runner.swift */; };
 		3B402D651E553529004164AC /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B402D641E553520004164AC /* RxSwift.framework */; };
 		3B402D661E553672004164AC /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B402D641E553520004164AC /* RxSwift.framework */; };
 		3B402D681E5536F2004164AC /* RxSwift.framework in Copy Dependency Frameworks */ = {isa = PBXBuildFile; fileRef = 3B402D641E553520004164AC /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -40,6 +41,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B3A58B71E5944540073C276 /* Runner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runner.swift; sourceTree = "<group>"; };
 		3B402D641E553520004164AC /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
 		OBJ_12 /* RxRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRunnerTests.swift; sourceTree = "<group>"; };
 		OBJ_14 /* RxRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_9 /* RxRunner.swift */,
+				3B3A58B71E5944540073C276 /* Runner.swift */,
 			);
 			name = RxRunner;
 			path = Sources;
@@ -200,6 +203,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_21 /* RxRunner.swift in Sources */,
+				3B3A58B81E5944540073C276 /* Runner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
