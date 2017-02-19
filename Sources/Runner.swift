@@ -16,6 +16,23 @@ public enum TaskEvent {
     case exit(statusCode: Int)
 }
 
+extension TaskEvent: Equatable {
+    public static func == (lhs: TaskEvent, rhs: TaskEvent) -> Bool {
+        switch (lhs, rhs) {
+        case let (.start(left), .start(right)):
+            return left == right
+        case let (.stdOut(left), .stdOut(right)):
+            return left == right
+        case let (.stdErr(left), .stdErr(right)):
+            return left == right
+        case let (.exit(left), .exit(right)):
+            return left == right
+        default:
+            return false
+        }
+    }
+}
+
 public struct Task {
     let launchPath: String
     let arguments: [String]

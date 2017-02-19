@@ -1,13 +1,19 @@
 import XCTest
 @testable import RxRunner
+import RxSwift
+import RxBlocking
 
 class RxRunnerTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssertEqual(RxRunner().text, "Hello, World!")
-    }
+    func testExample() throws {
+        let events = try Task(launchPath: "/bin/echo", arguments: ["hello", "world"]).launch()
+            .toBlocking()
+            .toArray()
 
+        XCTAssertEqual(events.count, 3)
+        XCTAssertEqual(events[0], .start(command: "/bin/echo hello world"))
+        XCTAssertEqual(events[1], .stdOut("hello world\n"))
+        XCTAssertEqual(events[2], .exit(statusCode: 0))
+    }
 
     static var allTests : [(String, (RxRunnerTests) -> () throws -> Void)] {
         return [
