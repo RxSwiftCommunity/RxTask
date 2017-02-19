@@ -11,6 +11,12 @@ import RxSwift
 
 #if os(Linux)
     typealias Process = Foundation.Task
+
+    extension Process {
+        var isRunning: Bool {
+            return running
+        }
+    }
 #endif
 
 public enum TaskEvent {
