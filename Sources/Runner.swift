@@ -9,6 +9,10 @@
 import Foundation
 import RxSwift
 
+#if os(Linux)
+    typealias Process = Foundation.Task
+#endif
+
 public enum TaskEvent {
     case start(command: String)
     case stdOut(String)
