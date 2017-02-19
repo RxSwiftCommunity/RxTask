@@ -26,14 +26,18 @@ public struct Task {
     }
 
     public func launch() -> Observable<TaskEvent> {
+        let process = Process()
+        process.launchPath = self.launchPath
+        process.arguments = self.arguments
+
+        let command = ([launchPath] + arguments).joined(separator: " ")
+
         return Observable.create { observer in
-            let process = Process()
-            process.launchPath = self.launchPath
-            process.arguments = self.arguments
+            process.standardOutput = self.pipe { observer.onNext(.stdOut($0)) }
+            process.standardError = self.pipe { observer.onNext(.stdErr($0)) }
 
             process.terminationHandler = self.terminationHandler(observer: observer)
 
-            let command = ([self.launchPath] + self.arguments).joined(separator: " ")
             observer.onNext(.start(command: command))
             process.launch()
 
@@ -46,7 +50,7 @@ public struct Task {
     }
 
     private func terminationHandler(observer: AnyObserver<TaskEvent>) -> (Process) -> Void {
-        // Handle process termination and determin if it was a normal exit
+        // Handle process termination and determine if it was a normal exit
         // or an error.
         return { process in
             switch process.terminationReason {
@@ -57,5 +61,17 @@ public struct Task {
                 observer.onError(NSError()) // TODO: Need to put a real error here
             }
         }
+    }
+
+    private func pipe(withHandler handler: @escaping (String) -> Void) -> Pipe {
+        let pipe = Pipe()
+
+        pipe.fileHandleForReading.readabilityHandler = { fileHandle in
+            if let string = String(data: fileHandle.availableData, encoding: .utf8) {
+                handler(string)
+            }
+        }
+
+        return pipe
     }
 }
