@@ -33,6 +33,10 @@ extension TaskEvent: Equatable {
     }
 }
 
+enum TaskError: Error {
+    case uncaughtSignal
+}
+
 public struct Task {
     let launchPath: String
     let arguments: [String]
@@ -75,7 +79,7 @@ public struct Task {
                 observer.onNext(.exit(statusCode: Int(process.terminationStatus)))
                 observer.onCompleted()
             case .uncaughtSignal:
-                observer.onError(NSError()) // TODO: Need to put a real error here
+                observer.onError(TaskError.uncaughtSignal)
             }
         }
     }
