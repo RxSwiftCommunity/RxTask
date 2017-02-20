@@ -55,7 +55,7 @@ class RxRunnerTests: XCTestCase {
         let contents = ([shebang] + commands).joined(separator: "\n")
         try contents.write(to: fileURL, atomically: true, encoding: .utf8)
 
-        let permissions = Int16(0o0770)
+        let permissions = NSNumber(value: 0o0770).int16Value
         try FileManager.default.setAttributes([.posixPermissions: permissions], ofItemAtPath: fileURL.path)
 
         return fileURL
