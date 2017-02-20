@@ -10,7 +10,7 @@ matrix:
         - set -o pipefail && xcodebuild -scheme RxRunner -project RxRunner.xcodeproj clean build test | xcpretty
       env: JOB=Xcode
       os: osx
-      osx_image: xcode8
+      osx_image: xcode8.2
       language: objective-c
       before_install:
         - ./scripts/upstall-carthage.sh
@@ -25,7 +25,7 @@ matrix:
         - swift test
       env: JOB=SPM
       os: osx
-      osx_image: xcode8
+      osx_image: xcode8.2
       language: objective-c
     - script:
         - swift build
