@@ -19,10 +19,19 @@ import RxSwift
     }
 #endif
 
+/// Event emitted by a launched `Task`.
 public enum TaskEvent {
+
+    /// The `Task` has started.
     case start(command: String)
+
+    /// The `Task` has output to `stdout`.
     case stdOut(String)
+
+    /// The `Task` has output to `stderr`.
     case stdErr(String)
+
+    /// The `Task` exited successfully.
     case exit(statusCode: Int)
 }
 
@@ -43,8 +52,13 @@ extension TaskEvent: Equatable {
     }
 }
 
+/// An error encountered in the execution of a `Task`.
 public enum TaskError: Error {
+
+    /// An uncaught signal was encountered.
     case uncaughtSignal
+
+    /// The `Task` exited unsuccessfully.
     case exit(statusCode: Int)
 }
 
@@ -61,19 +75,38 @@ extension TaskError: Equatable {
     }
 }
 
+/// Encapsulates launching a RxSwift powered command line task.
 public struct Task {
+
+    /// The location of the executable.
     let launchPath: String
+
+    /// The arguments to be passed to the executable.
     let arguments: [String]
+
+    /// The working directory of the task. If `nil`, this will inherit from the parent process.
     let workingDirectory: String?
+
+    /// The environment to launch the task with. If `nil`, this will inherit from the parent process.
     let environment: [String: String]?
 
-    public init(launchPath: String, arguments: [String] = [], workingDirectory: String? = nil, environmnt: [String: String]? = nil) {
+    /**
+     Create a new task.
+     
+     - parameters:
+       - launchPath: The location of the executable.
+       - arguments: The arguments to be passed to the executable.
+       - workingDirectory: The working directory of the task. If not used, this will inherit from the parent process.
+       - environment: The environment to launch the task with. If not used, this will inherit from the parent process.
+    */
+    public init(launchPath: String, arguments: [String] = [], workingDirectory: String? = nil, environment: [String: String]? = nil) {
         self.launchPath = launchPath
         self.arguments = arguments
         self.workingDirectory = workingDirectory
-        self.environment = environmnt
+        self.environment = environment
     }
 
+    /// Launch the `Task`.
     public func launch() -> Observable<TaskEvent> {
         let process = Process()
         process.launchPath = self.launchPath
