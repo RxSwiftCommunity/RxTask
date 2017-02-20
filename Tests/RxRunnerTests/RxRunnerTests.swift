@@ -57,7 +57,7 @@ class RxRunnerTests: XCTestCase {
         XCTAssertEqual(events[2], .exit(statusCode: 0))
     }
 
-    func testExitsWithFailingStatus() throws {
+    func testExitsWithFailingStatusErrors() throws {
         let script = try ScriptFile(commands: ["exit 100"])
 
         do {
@@ -74,10 +74,32 @@ class RxRunnerTests: XCTestCase {
         }
     }
 
+    func testUncaughtSignalErrors() throws {
+        let script = try ScriptFile(commands: [
+                "kill $$",
+                "sleep 10"
+            ])
+
+        do {
+            _ = try getEvents(for: script)
+
+            // If we get this far it is a failure
+            XCTFail()
+        } catch {
+            if let error = error as? TaskError {
+                XCTAssertEqual(error, .uncaughtSignal)
+            } else {
+                XCTFail()
+            }
+        }
+    }
+
     static var allTests : [(String, (RxRunnerTests) -> () throws -> Void)] {
         return [
             ("testStdOut", testStdOut),
-            ("testStdErr", testStdErr)
+            ("testStdErr", testStdErr),
+            ("testExitsWithFailingStatusErrors", testExitsWithFailingStatusErrors),
+            ("testUncaughtSignalErrors", testUncaughtSignalErrors)
         ]
     }
 
