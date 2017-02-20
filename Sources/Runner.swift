@@ -64,16 +64,23 @@ extension TaskError: Equatable {
 public struct Task {
     let launchPath: String
     let arguments: [String]
+    let workingDirectory: String?
+    let environment: [String: String]?
 
-    public init(launchPath: String, arguments: [String] = []) {
+    public init(launchPath: String, arguments: [String] = [], workingDirectory: String? = nil, environmnt: [String: String]? = nil) {
         self.launchPath = launchPath
         self.arguments = arguments
+        self.workingDirectory = workingDirectory
+        self.environment = environmnt
     }
 
     public func launch() -> Observable<TaskEvent> {
         let process = Process()
         process.launchPath = self.launchPath
         process.arguments = self.arguments
+
+        if let workingDirectory = workingDirectory { process.currentDirectoryPath = workingDirectory }
+        if let environment = environment { process.environment = environment }
 
         let command = ([launchPath] + arguments).joined(separator: " ")
 
