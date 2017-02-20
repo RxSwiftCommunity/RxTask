@@ -35,7 +35,7 @@ class RxRunnerTests: XCTestCase {
                 "sleep 0.1"
             ])
 
-        let events = try Task.init(launchPath: script.path).launch()
+        let events = try Task(launchPath: script.path).launch()
             .toBlocking()
             .toArray()
 
@@ -51,7 +51,7 @@ class RxRunnerTests: XCTestCase {
             "sleep 0.1"
             ])
 
-        let events = try Task.init(launchPath: script.path).launch()
+        let events = try Task(launchPath: script.path).launch()
             .toBlocking()
             .toArray()
 
