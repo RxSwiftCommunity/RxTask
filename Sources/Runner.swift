@@ -43,8 +43,22 @@ extension TaskEvent: Equatable {
     }
 }
 
-enum TaskError: Error {
+public enum TaskError: Error {
     case uncaughtSignal
+    case exit(statusCode: Int)
+}
+
+extension TaskError: Equatable {
+    public static func == (lhs: TaskError, rhs: TaskError) -> Bool {
+        switch (lhs, rhs) {
+        case (.uncaughtSignal, .uncaughtSignal):
+            return true
+        case let (.exit(left), .exit(right)):
+            return left == right
+        default:
+            return false
+        }
+    }
 }
 
 public struct Task {
@@ -86,8 +100,12 @@ public struct Task {
         return { process in
             switch process.terminationReason {
             case .exit:
-                observer.onNext(.exit(statusCode: Int(process.terminationStatus)))
-                observer.onCompleted()
+                if process.terminationStatus == 0 {
+                    observer.onNext(.exit(statusCode: Int(process.terminationStatus)))
+                    observer.onCompleted()
+                } else {
+                    observer.onError(TaskError.exit(statusCode: Int(process.terminationStatus)))
+                }
             case .uncaughtSignal:
                 observer.onError(TaskError.uncaughtSignal)
             }

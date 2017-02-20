@@ -35,9 +35,7 @@ class RxRunnerTests: XCTestCase {
                 "sleep 0.1"
             ])
 
-        let events = try Task(launchPath: script.path).launch()
-            .toBlocking()
-            .toArray()
+        let events = try getEvents(for: script)
 
         XCTAssertEqual(events.count, 3)
         XCTAssertEqual(events[0], .start(command: script.path))
@@ -51,9 +49,7 @@ class RxRunnerTests: XCTestCase {
             "sleep 0.1"
             ])
 
-        let events = try Task(launchPath: script.path).launch()
-            .toBlocking()
-            .toArray()
+        let events = try getEvents(for: script)
 
         XCTAssertEqual(events.count, 3)
         XCTAssertEqual(events[0], .start(command: script.path))
@@ -61,10 +57,35 @@ class RxRunnerTests: XCTestCase {
         XCTAssertEqual(events[2], .exit(statusCode: 0))
     }
 
+    func testExitsWithFailingStatus() throws {
+        let script = try ScriptFile(commands: ["exit 100"])
+
+        do {
+            _ = try getEvents(for: script)
+
+            // If we get this far it is a failure
+            XCTFail()
+        } catch {
+            if let error = error as? TaskError {
+                XCTAssertEqual(error, .exit(statusCode: 100))
+            } else {
+                XCTFail()
+            }
+        }
+    }
+
     static var allTests : [(String, (RxRunnerTests) -> () throws -> Void)] {
         return [
             ("testStdOut", testStdOut),
             ("testStdErr", testStdErr)
         ]
+    }
+
+    // MARK: Helpers
+
+    func getEvents(for script: ScriptFile) throws -> [TaskEvent] {
+        return try Task(launchPath: script.path).launch()
+            .toBlocking()
+            .toArray()
     }
 }
