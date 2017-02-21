@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "OBJ_16"
                BuildableName = "RxRunner.framework"
-               BlueprintName = "RxRunner"
-               ReferencedContainer = "container:RxRunner.xcodeproj">
+               BlueprintName = "RxTask"
+               ReferencedContainer = "container:RxTask.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "OBJ_23"
-               BuildableName = "RxRunnerTests.xctest"
-               BlueprintName = "RxRunnerTests"
-               ReferencedContainer = "container:RxRunner.xcodeproj">
+               BuildableName = "RxTaskTests.xctest"
+               BlueprintName = "RxTaskTests"
+               ReferencedContainer = "container:RxTask.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -58,8 +58,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "OBJ_16"
             BuildableName = "RxRunner.framework"
-            BlueprintName = "RxRunner"
-            ReferencedContainer = "container:RxRunner.xcodeproj">
+            BlueprintName = "RxTask"
+            ReferencedContainer = "container:RxTask.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>

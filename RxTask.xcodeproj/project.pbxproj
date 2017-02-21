@@ -54,7 +54,7 @@
 		3BAF88C71E5BC457009102E1 /* ScriptFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptFile.swift; sourceTree = "<group>"; };
 		OBJ_12 /* TaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
 		OBJ_14 /* RxRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_15 /* RxRunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = RxRunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_15 /* RxTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = RxTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,27 +92,27 @@
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_11 /* RxRunnerTests */,
+				OBJ_11 /* RxTaskTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		OBJ_11 /* RxRunnerTests */ = {
+		OBJ_11 /* RxTaskTests */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_12 /* TaskTests.swift */,
 				3BAF88C51E5BC39B009102E1 /* Observable+TaskTests.swift */,
 				3BAF88C71E5BC457009102E1 /* ScriptFile.swift */,
 			);
-			name = RxRunnerTests;
-			path = Tests/RxRunnerTests;
+			name = RxTaskTests;
+			path = Tests/RxTasktests;
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_14 /* RxRunner.framework */,
-				OBJ_15 /* RxRunnerTests.xctest */,
+				OBJ_15 /* RxTaskTests.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -131,27 +131,27 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* RxRunner */,
+				OBJ_8 /* RxTask */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		OBJ_8 /* RxRunner */ = {
+		OBJ_8 /* RxTask */ = {
 			isa = PBXGroup;
 			children = (
 				3B3A58B71E5944540073C276 /* Task.swift */,
 				3BAF88C31E5BBCE9009102E1 /* Observable+Task.swift */,
 			);
-			name = RxRunner;
+			name = RxTask;
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		OBJ_16 /* RxRunner */ = {
+		OBJ_16 /* RxTask */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_17 /* Build configuration list for PBXNativeTarget "RxRunner" */;
+			buildConfigurationList = OBJ_17 /* Build configuration list for PBXNativeTarget "RxTask" */;
 			buildPhases = (
 				OBJ_20 /* Sources */,
 				OBJ_22 /* Frameworks */,
@@ -160,14 +160,14 @@
 			);
 			dependencies = (
 			);
-			name = RxRunner;
+			name = RxTask;
 			productName = RxRunner;
 			productReference = OBJ_14 /* RxRunner.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		OBJ_23 /* RxRunnerTests */ = {
+		OBJ_23 /* RxTaskTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_24 /* Build configuration list for PBXNativeTarget "RxRunnerTests" */;
+			buildConfigurationList = OBJ_24 /* Build configuration list for PBXNativeTarget "RxTaskTests" */;
 			buildPhases = (
 				OBJ_27 /* Sources */,
 				OBJ_29 /* Frameworks */,
@@ -178,9 +178,9 @@
 			dependencies = (
 				OBJ_31 /* PBXTargetDependency */,
 			);
-			name = RxRunnerTests;
+			name = RxTaskTests;
 			productName = RxRunnerTests;
-			productReference = OBJ_15 /* RxRunnerTests.xctest */;
+			productReference = OBJ_15 /* RxTaskTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -191,7 +191,7 @@
 			attributes = {
 				LastUpgradeCheck = 9999;
 			};
-			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "RxRunner" */;
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "RxTask" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -203,8 +203,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				OBJ_16 /* RxRunner */,
-				OBJ_23 /* RxRunnerTests */,
+				OBJ_16 /* RxTask */,
+				OBJ_23 /* RxTaskTests */,
 			);
 		};
 /* End PBXProject section */
@@ -234,7 +234,7 @@
 /* Begin PBXTargetDependency section */
 		OBJ_31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_16 /* RxRunner */;
+			target = OBJ_16 /* RxTask */;
 			targetProxy = 3B402D621E552FB2004164AC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -250,7 +250,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = RxRunner.xcodeproj/RxRunner_Info.plist;
+				INFOPLIST_FILE = RxTask.xcodeproj/RxTask_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx $(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -271,7 +271,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = RxRunner.xcodeproj/RxRunner_Info.plist;
+				INFOPLIST_FILE = RxTask.xcodeproj/RxTask_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx $(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -292,10 +292,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = RxRunner.xcodeproj/RxRunnerTests_Info.plist;
+				INFOPLIST_FILE = RxTask.xcodeproj/RxTaskTests_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks $(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_NAME = RxTaskTests;
 				TARGET_NAME = RxRunnerTests;
 			};
 			name = Debug;
@@ -310,10 +311,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = RxRunner.xcodeproj/RxRunnerTests_Info.plist;
+				INFOPLIST_FILE = RxTask.xcodeproj/RxTaskTests_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks $(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_NAME = RxTaskTests;
 				TARGET_NAME = RxRunnerTests;
 			};
 			name = Release;
@@ -365,7 +367,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		OBJ_17 /* Build configuration list for PBXNativeTarget "RxRunner" */ = {
+		OBJ_17 /* Build configuration list for PBXNativeTarget "RxTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_18 /* Debug */,
@@ -374,7 +376,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_2 /* Build configuration list for PBXProject "RxRunner" */ = {
+		OBJ_2 /* Build configuration list for PBXProject "RxTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_3 /* Debug */,
@@ -383,7 +385,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_24 /* Build configuration list for PBXNativeTarget "RxRunnerTests" */ = {
+		OBJ_24 /* Build configuration list for PBXNativeTarget "RxTaskTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_25 /* Debug */,
