@@ -17,7 +17,7 @@
 		3BAF88C61E5BC39B009102E1 /* Observable+TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF88C51E5BC39B009102E1 /* Observable+TaskTests.swift */; };
 		3BAF88C91E5BC47E009102E1 /* ScriptFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF88C71E5BC457009102E1 /* ScriptFile.swift */; };
 		OBJ_28 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* TaskTests.swift */; };
-		OBJ_30 /* RxRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* RxRunner.framework */; };
+		OBJ_30 /* RxTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* RxTask.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,7 @@
 		3BAF88C51E5BC39B009102E1 /* Observable+TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+TaskTests.swift"; sourceTree = "<group>"; };
 		3BAF88C71E5BC457009102E1 /* ScriptFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptFile.swift; sourceTree = "<group>"; };
 		OBJ_12 /* TaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
-		OBJ_14 /* RxRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_14 /* RxTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_15 /* RxTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = RxTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_30 /* RxRunner.framework in Frameworks */,
+				OBJ_30 /* RxTask.framework in Frameworks */,
 				3B402D661E553672004164AC /* RxSwift.framework in Frameworks */,
 				3B2BB4101E59635E00C742AA /* RxBlocking.framework in Frameworks */,
 			);
@@ -111,7 +111,7 @@
 		OBJ_13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_14 /* RxRunner.framework */,
+				OBJ_14 /* RxTask.framework */,
 				OBJ_15 /* RxTaskTests.xctest */,
 			);
 			name = Products;
@@ -162,7 +162,7 @@
 			);
 			name = RxTask;
 			productName = RxRunner;
-			productReference = OBJ_14 /* RxRunner.framework */;
+			productReference = OBJ_14 /* RxTask.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		OBJ_23 /* RxTaskTests */ = {
@@ -254,10 +254,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx $(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = RxRunner;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				TARGET_NAME = RxRunner;
+				TARGET_NAME = RxTask;
 			};
 			name = Debug;
 		};
@@ -275,10 +275,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx $(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = RxRunner;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				TARGET_NAME = RxRunner;
+				TARGET_NAME = RxTask;
 			};
 			name = Release;
 		};

@@ -1,5 +1,5 @@
 import XCTest
-@testable import RxRunner
+@testable import RxTask
 import RxSwift
 import RxBlocking
 

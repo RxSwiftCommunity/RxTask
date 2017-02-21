@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import RxRunner
+@testable import RxTask
 import RxBlocking
 
 class ObservableTaskTests: XCTestCase {
