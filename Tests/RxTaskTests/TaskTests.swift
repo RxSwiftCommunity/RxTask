@@ -13,7 +13,7 @@ class TaskTests: XCTestCase {
         let events = try getEvents(for: script)
 
         XCTAssertEqual(events.count, 3)
-        XCTAssertEqual(events[0], .start(command: script.path))
+        XCTAssertEqual(events[0], .launch(command: script.path))
         XCTAssertEqual(events[1], .stdOut("hello world\n"))
         XCTAssertEqual(events[2], .exit(statusCode: 0))
     }
@@ -27,7 +27,7 @@ class TaskTests: XCTestCase {
         let events = try getEvents(for: script)
 
         XCTAssertEqual(events.count, 3)
-        XCTAssertEqual(events[0], .start(command: script.path))
+        XCTAssertEqual(events[0], .launch(command: script.path))
         XCTAssertEqual(events[1], .stdErr("hello world\n"))
         XCTAssertEqual(events[2], .exit(statusCode: 0))
     }

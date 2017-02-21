@@ -22,8 +22,8 @@ import RxSwift
 /// Event emitted by a launched `Task`.
 public enum TaskEvent {
 
-    /// The `Task` has started.
-    case start(command: String)
+    /// The `Task` has launched.
+    case launch(command: String)
 
     /// The `Task` has output to `stdout`.
     case stdOut(String)
@@ -38,7 +38,7 @@ public enum TaskEvent {
 extension TaskEvent: Equatable {
     public static func == (lhs: TaskEvent, rhs: TaskEvent) -> Bool {
         switch (lhs, rhs) {
-        case let (.start(left), .start(right)):
+        case let (.launch(left), .launch(right)):
             return left == right
         case let (.stdOut(left), .stdOut(right)):
             return left == right
@@ -123,7 +123,7 @@ public struct Task {
 
             process.terminationHandler = self.terminationHandler(observer: observer)
 
-            observer.onNext(.start(command: command))
+            observer.onNext(.launch(command: command))
             process.launch()
 
             return Disposables.create {

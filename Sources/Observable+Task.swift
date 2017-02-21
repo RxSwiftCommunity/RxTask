@@ -36,7 +36,7 @@ extension TaskEvent: TaskEventType {
 
 public extension Observable where Element: TaskEventType {
 
-    /// Filters out the output and start events to produce just an `Observable` of the exit status.
+    /// Filters out the output and launch events to produce just an `Observable` of the exit status.
     func justExitStatus() -> Observable<Int> {
         return flatMap { event -> Observable<Int> in
             guard let exitStatus = event.exitStatus else {
@@ -47,7 +47,7 @@ public extension Observable where Element: TaskEventType {
         }
     }
 
-    /// Filters out the start and exit events to just produce and `Observable` of the output (`stdout` and `stderr`).
+    /// Filters out the launch and exit events to just produce and `Observable` of the output (`stdout` and `stderr`).
     func justOutput() -> Observable<String> {
         return flatMap { event -> Observable<String> in
             guard let output = event.output else {
