@@ -9,12 +9,19 @@
 import Foundation
 import RxSwift
 
+/// A protocol encapsulated `TaskEvent`. Necessary to create `Observable` operators and not intended for public use.
 public protocol TaskEventType {
+
+    /// The exit status code if available, `nil` otherwise.
     var exitStatus: Int? { get }
+
+    /// The output of the event if available, `nil` otherwise.
     var output: String? { get }
 }
 
 extension TaskEvent: TaskEventType {
+
+    /// The exit status code if available, `nil` otherwise.
     public var exitStatus: Int? {
         switch self {
         case .exit(let statusCode):
@@ -24,6 +31,7 @@ extension TaskEvent: TaskEventType {
         }
     }
 
+    /// The output of the event if available, `nil` otherwise.
     public var output: String? {
         switch self {
         case .stdErr(let output), .stdOut(let output):

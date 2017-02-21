@@ -36,6 +36,8 @@ public enum TaskEvent {
 }
 
 extension TaskEvent: Equatable {
+
+    /// Equates two `TaskEvent`s.
     public static func == (lhs: TaskEvent, rhs: TaskEvent) -> Bool {
         switch (lhs, rhs) {
         case let (.launch(left), .launch(right)):
@@ -63,6 +65,8 @@ public enum TaskError: Error {
 }
 
 extension TaskError: Equatable {
+
+    /// Equates two `TaskError`s.
     public static func == (lhs: TaskError, rhs: TaskError) -> Bool {
         switch (lhs, rhs) {
         case (.uncaughtSignal, .uncaughtSignal):
