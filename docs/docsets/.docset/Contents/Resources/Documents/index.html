@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+           Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html"> Reference</a>
+      <img class="carat" src="img/carat.png" />
+        Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TaskError.html">TaskError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TaskEvent.html">TaskEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Observable.html">Observable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/TaskEventType.html">TaskEventType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Task.html">Task</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            
+            <a href='#rxtask' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='rxtask'>RxTask</h1>
+
+<p>An RxSwift implementation of a command line task runner.</p>
+
+<p><a href="https://travis-ci.org/scottrhoyt/RxTask"><img src="https://travis-ci.org/scottrhoyt/RxTask.svg?branch=master" alt="Build Status"></a>
+<a href="https://codecov.io/github/scottrhoyt/RxTask?branch=master"><img src="https://codecov.io/github/scottrhoyt/RxTask/coverage.svg?branch=master" alt="codecov.io"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
+<a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="Swift Package Manager compatible"></a>
+<img src="https://img.shields.io/badge/Platform-macOS-blue.svg" alt="Platform macOS">
+<a href="https://swift.org"><img src="https://img.shields.io/badge/Language-Swift%203.0-orange.svg" alt="Language Swift 3.0"></a></p>
+<a href='#linux-compatibility' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='linux-compatibility'>Linux Compatibility</h2>
+
+<p>Currently, RxTask does not support Linux. RxTask relies on some functionality
+in <code>Foundation</code> that is currently not available in the Linux port. This will be
+re-evaluated after the Swift 3.1 release. PRs in this area are quite welcome! 👍</p>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+<a href='#carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='carthage'>Carthage</h3>
+<pre class="highlight shell"><code>github <span class="s2">"scottrhoyt/RxTask"</span>
+</code></pre>
+<a href='#spm' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='spm'>SPM</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PackageDescription</span>
+
+<span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="kt">Package</span><span class="p">(</span>
+    <span class="nv">name</span><span class="p">:</span> <span class="s">"YOUR_PROJECT_NAME"</span><span class="p">,</span>
+    <span class="nv">targets</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/scottrhoyt/RxSwift.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre>
+<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
+<a href='#create-a-task' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-a-task'>Create A Task</h3>
+
+<p>Creating a task is as simple as providing a <code>launchPath</code> to the executable.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">task</span> <span class="o">=</span> <span class="kt">Task</span><span class="p">(</span><span class="nv">launchPath</span><span class="p">:</span> <span class="s">"/bin/ls"</span><span class="p">)</span>
+</code></pre>
+
+<p>Optionally, you can provide <code>arguments</code>, a <code>workingDirectory</code>, and an
+<code>environment</code>.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">task</span> <span class="o">=</span> <span class="kt">Task</span><span class="p">(</span><span class="nv">launchPath</span><span class="p">:</span> <span class="s">"/bin/echo"</span><span class="p">,</span> <span class="nv">arguments</span><span class="p">:</span> <span class="p">[</span><span class="s">"$MESSAGE"</span><span class="p">],</span> <span class="nv">environment</span><span class="p">:</span> <span class="p">[</span><span class="s">"MESSAGE"</span><span class="p">:</span> <span class="s">"Hello World!"</span><span class="p">])</span>
+</code></pre>
+<a href='#launch-a-task' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='launch-a-task'>Launch A Task</h3>
+
+<p><code>Task</code>s can be launched with the <code>launch()</code> method. This produces a
+self-contained process. This means the same task can be <code>launch()</code>ed multiple
+times producing separate processes.</p>
+<a href='#taskevent' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='taskevent'>TaskEvent</h4>
+
+<p>The output of <code>launch()</code> is a <code>Observable&lt;TaskEvent&gt;</code>. <code>TaskEvent</code> is an <code>enum</code>
+that is used to report significant events in the task lifetime. The possible
+events are:</p>
+
+<ul>
+<li><code>launch(command: String)</code></li>
+<li><code>stdOut(String)</code></li>
+<li><code>stdErr(String)</code></li>
+<li><code>exit(statusCode: Int)</code></li>
+</ul>
+
+<p>** Note: ** Currently an event is only considered successful if it exits with a
+<code>statusCode</code> of 0. Other exit statuses will be considered a <code>TaskError</code>.</p>
+<a href='#filtering-taskevents' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='filtering-taskevents'>Filtering TaskEvents</h4>
+
+<p>If you are only concerned with whether a <code>Task</code> has completed successfully, you
+can use the built-in operator <code>justExitStatus()</code>.</p>
+<pre class="highlight swift"><code><span class="kt">Task</span><span class="p">(</span><span class="nv">launchPath</span><span class="p">:</span> <span class="s">"/bin/ls"</span><span class="p">)</span><span class="o">.</span><span class="nf">launch</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">justExitStatus</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="n">exitStatus</span> <span class="k">in</span> <span class="cm">/* ... */</span> <span class="p">})</span>
+    <span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</code></pre>
+
+<p>Alternatively, if you are only interested in the output of a <code>Task</code>, you can use
+the operator <code>justOutput()</code>. <em>This will send the output of both <code>stdout</code> and
+<code>stderr</code></em>.</p>
+<pre class="highlight swift"><code><span class="kt">Task</span><span class="p">(</span><span class="nv">launchPath</span><span class="p">:</span> <span class="s">"/bin/ls"</span><span class="p">)</span><span class="o">.</span><span class="nf">launch</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">justOutput</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="n">output</span> <span class="k">in</span> <span class="cm">/* ... */</span> <span class="p">})</span>
+    <span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
+</code></pre>
+<a href='#taskerror' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='taskerror'>TaskError</h4>
+
+<p><code>TaskError</code> is an <code>Error</code> that will be emitted under the following situations:</p>
+
+<ul>
+<li><code>uncaughtSignal</code>: The <code>Task</code> terminated with an uncaught signal (e.g. <code>SIGINT</code>).</li>
+<li><code>exit(statusCode: Int)</code>: The <code>Task</code> exited with a non-zero exit code.</li>
+</ul>
+<a href='#api-reference' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='api-reference'>API Reference</h2>
+
+<p>Full docs can be found <a href="http://scottrhoyt.github.io/RxTask/">here</a>.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-02-20)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
