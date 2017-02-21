@@ -1,5 +1,5 @@
 # RxTask
-An RxSwift implementation of a command line task runner.
+An [RxSwift](https://github.com/ReactiveX/RxSwift) implementation of a command line task runner.
 
 [![Build Status](https://travis-ci.org/scottrhoyt/RxTask.svg?branch=master)](https://travis-ci.org/scottrhoyt/RxTask)
 [![codecov](https://codecov.io/gh/scottrhoyt/RxTask/branch/master/graph/badge.svg)](https://codecov.io/gh/scottrhoyt/RxTask)
