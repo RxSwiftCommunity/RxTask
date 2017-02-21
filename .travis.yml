@@ -1,13 +1,13 @@
 env:
   global:
-    - FRAMEWORK_NAME=RxRunner
+    - FRAMEWORK_NAME=RxTask
 
 script: placeholder # workaround for https://github.com/travis-ci/travis-ci/issues/4681
 matrix:
   include:
     - script:
         - carthage bootstrap --platform mac
-        - set -o pipefail && xcodebuild -scheme RxRunner -project RxRunner.xcodeproj clean build test | xcpretty
+        - set -o pipefail && xcodebuild -scheme $FRAMEWORK_NAME -project $FRAMEWORK_NAME.xcodeproj clean build-for-testing test | xcpretty
       env: JOB=Xcode
       os: osx
       osx_image: xcode8.2

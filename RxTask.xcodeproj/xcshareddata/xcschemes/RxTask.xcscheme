@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "OBJ_16"
-               BuildableName = "RxRunner.framework"
+               BuildableName = "RxTask.framework"
                BlueprintName = "RxTask"
                ReferencedContainer = "container:RxTask.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "OBJ_16"
-            BuildableName = "RxRunner.framework"
+            BuildableName = "RxTask.framework"
             BlueprintName = "RxTask"
             ReferencedContainer = "container:RxTask.xcodeproj">
          </BuildableReference>
