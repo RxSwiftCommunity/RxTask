@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		3B2BB4101E59635E00C742AA /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2BB40F1E59635300C742AA /* RxBlocking.framework */; };
 		3B2BB4111E59636300C742AA /* RxBlocking.framework in Copy Dependency Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2BB40F1E59635300C742AA /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3B3A58B81E5944540073C276 /* Runner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3A58B71E5944540073C276 /* Runner.swift */; };
+		3B3A58B81E5944540073C276 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3A58B71E5944540073C276 /* Task.swift */; };
 		3B402D651E553529004164AC /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B402D641E553520004164AC /* RxSwift.framework */; };
 		3B402D661E553672004164AC /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B402D641E553520004164AC /* RxSwift.framework */; };
 		3B402D681E5536F2004164AC /* RxSwift.framework in Copy Dependency Frameworks */ = {isa = PBXBuildFile; fileRef = 3B402D641E553520004164AC /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		OBJ_21 /* RxRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* RxRunner.swift */; };
-		OBJ_28 /* RxRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* RxRunnerTests.swift */; };
+		OBJ_28 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* TaskTests.swift */; };
 		OBJ_30 /* RxRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* RxRunner.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,13 +44,12 @@
 
 /* Begin PBXFileReference section */
 		3B2BB40F1E59635300C742AA /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/Mac/RxBlocking.framework; sourceTree = "<group>"; };
-		3B3A58B71E5944540073C276 /* Runner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runner.swift; sourceTree = "<group>"; };
+		3B3A58B71E5944540073C276 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3B402D641E553520004164AC /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
-		OBJ_12 /* RxRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRunnerTests.swift; sourceTree = "<group>"; };
+		OBJ_12 /* TaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
 		OBJ_14 /* RxRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_15 /* RxRunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = RxRunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* RxRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRunner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +94,7 @@
 		OBJ_11 /* RxRunnerTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_12 /* RxRunnerTests.swift */,
+				OBJ_12 /* TaskTests.swift */,
 			);
 			name = RxRunnerTests;
 			path = Tests/RxRunnerTests;
@@ -133,8 +131,7 @@
 		OBJ_8 /* RxRunner */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* RxRunner.swift */,
-				3B3A58B71E5944540073C276 /* Runner.swift */,
+				3B3A58B71E5944540073C276 /* Task.swift */,
 			);
 			name = RxRunner;
 			path = Sources;
@@ -208,8 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_21 /* RxRunner.swift in Sources */,
-				3B3A58B81E5944540073C276 /* Runner.swift in Sources */,
+				3B3A58B81E5944540073C276 /* Task.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_28 /* RxRunnerTests.swift in Sources */,
+				OBJ_28 /* TaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

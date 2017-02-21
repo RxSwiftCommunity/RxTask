@@ -28,7 +28,7 @@ class ScriptFile {
     }
 }
 
-class RxRunnerTests: XCTestCase {
+class TaskTests: XCTestCase {
     func testStdOut() throws {
         let script = try ScriptFile(commands: [
                 "echo hello world",
@@ -94,7 +94,7 @@ class RxRunnerTests: XCTestCase {
         }
     }
 
-    static var allTests : [(String, (RxRunnerTests) -> () throws -> Void)] {
+    static var allTests : [(String, (TaskTests) -> () throws -> Void)] {
         return [
             ("testStdOut", testStdOut),
             ("testStdErr", testStdErr),

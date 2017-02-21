@@ -2,5 +2,5 @@ import XCTest
 @testable import RxRunnerTests
 
 XCTMain([
-     testCase(RxRunnerTests.allTests),
+     testCase(TaskTests.allTests),
 ])
