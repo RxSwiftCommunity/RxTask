@@ -39,3 +39,4 @@ Packages/
 
 # Carthage
 Carthage
+*.framework.zip

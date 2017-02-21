@@ -1,11 +1,12 @@
 # RxTask
-An RxSwift implementation of a command line task runner.
+An [RxSwift](https://github.com/ReactiveX/RxSwift) implementation of a command line task runner.
 
+[![GitHub release](https://img.shields.io/github/release/scottrhoyt/RxTask.svg)]()
 [![Build Status](https://travis-ci.org/scottrhoyt/RxTask.svg?branch=master)](https://travis-ci.org/scottrhoyt/RxTask)
 [![codecov](https://codecov.io/gh/scottrhoyt/RxTask/branch/master/graph/badge.svg)](https://codecov.io/gh/scottrhoyt/RxTask)
 [![docs](docs/badge.svg)](https://scottrhoyt.github.io/RxTask/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
+[![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 ![Platform macOS](https://img.shields.io/badge/Platform-macOS-blue.svg)
 [![Language Swift 3.0](https://img.shields.io/badge/Language-Swift%203.0-orange.svg)](https://swift.org)
 
