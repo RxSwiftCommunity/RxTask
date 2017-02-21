@@ -69,7 +69,7 @@ class TaskTests: XCTestCase {
         }
     }
 
-    static var allTests : [(String, (TaskTests) -> () throws -> Void)] {
+    static var allTests: [(String, (TaskTests) -> () throws -> Void)] {
         return [
             ("testStdOut", testStdOut),
             ("testStdErr", testStdErr),

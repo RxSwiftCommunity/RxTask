@@ -44,10 +44,10 @@ class ObservableTaskTests: XCTestCase {
         XCTAssertEqual(exitStatus[1], "world\n")
     }
 
-    static var allTests : [(String, (ObservableTaskTests) -> () throws -> Void)] {
+    static var allTests: [(String, (ObservableTaskTests) -> () throws -> Void)] {
         return [
             ("testJustExitStatus", testJustExitStatus),
-            ("testJustOutput", testJustOutput),
+            ("testJustOutput", testJustOutput)
         ]
     }
 }
