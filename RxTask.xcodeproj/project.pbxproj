@@ -105,7 +105,7 @@
 				3BAF88C71E5BC457009102E1 /* ScriptFile.swift */,
 			);
 			name = RxTaskTests;
-			path = Tests/RxTasktests;
+			path = Tests/RxTaskTests;
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_13 /* Products */ = {
