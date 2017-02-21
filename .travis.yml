@@ -17,9 +17,9 @@ matrix:
         - ./scripts/upstall-swiftlint.sh
       after_success:
         - bash <(curl -s https://codecov.io/bash)
-#      before_deploy:
-#        - carthage build --no-skip-current
-#        - carthage archive $FRAMEWORK_NAME
+      before_deploy:
+        - carthage build --no-skip-current
+        - carthage archive $FRAMEWORK_NAME
     - script:
         - swift test
       env: JOB=SPM
@@ -38,13 +38,13 @@ matrix:
   exclude:
     - script: placeholder # workaround for https://github.com/travis-ci/travis-ci/issues/4681
 
-#deploy:
-#  provider: releases
-#  api_key:
-#    secure: CLgRTCkr9FXlDS9bTejaSCUN78lT110kyFXsod+LAGZo/zqzebVwo/XTqSIdHV6raWP+KsazUNyt4YhjZgaLG2CCf+MZVY2yelnuE419/rgSqW2FrVkcMqhIc+vFAp57qK/E8mC5GnZO35uhxZ0CM98h75G7pL2ebWu/WmB9zV3nujNl1mTXRIMD9SRihjzM+RjyrNAPZyqvVkFM4nJBUTA3jW+QsbqcNy7ds1Erz/kFsuBHCTbbYaqq+W7vZAL7NQlaqfpcN1jSxh0PuaEjLicCMqzDpkd0ODeu1F0r9Ql/9Nf7QiWv8BusBdwBqee2p+ET7h2hXYXzkNYkVCz1Gp8twviXcQNyfM3h8lhqcvsYPcjXIWEHzwgNsUlltFH62//JqlJegU17p2WniJXtHNHsjcEnjC1ngLix+IBSv9z1uJPYGisSA4AwLjiiEQc8UhRNT8DOmrVmRcODIU8PMfJPiwmA8eBpVb6bwD/zwMDtH3E40gO1qTIvz496I0VT+81GfDYv0xfHcER++OBpCNjLnnInTFCDmF8XaPR14jusCyWbAeL5pGb4K6HcwYPWM5g27/2yaUNY7haI1BFi/p/apQ9sFzWeHJ0BG3hwNUPrLwIsqTyXZm5Q/OuDeaHa7Ye9qbJtO281m09a2qWEmBx/fZHQuT4eNbe1W/xoWcA=
-#  file: $FRAMEWORK_NAME.framework.zip
-#  skip_cleanup: true
-#  on:
-#    repo: scottrhoyt/$FRAMEWORK_NAME
-#    tags: true
-#    condition: $JOB = Xcode
+deploy:
+  provider: releases
+  api_key:
+    secure: JVMI8VRlw0naEi3KcQgU+hqLB0L0FdeqLBCHAetjDeqhKqAGkjiKc+JaHqbt24KK64Bny+WwMle/4o3BgYo38W7fim8vIq+15PdR426cY2TyTSFH7EzY/gRta5ljvkR8R8YN/pYRlZR829mDKdUB7nEIS6bNY9t9bVn3gfn6Qg1rB3GsNjOlkoVKidPGAMEwTG0sScfkgi9v0yLIvOuf76ZWhWP1knPpw/HEiUNg20okRmnXqy0hLH3u2TTT63x0XEDK6eJyJo/MbN+O0oA2AFk96ZxVutanwE6Vud0oTT1YOzaGhkkr7iQRDBmP4/dJDfJ37KjqSjL+t6W8/Zv+i3ydKhqqDXPEC6bryLGwbL+MDWXmqCEi1EhXGlf9B1Zg/ozpZfR0MVJhj+Cgq5QYkD+MrWlFM8F/QEnr/dywXh6Q6QCDSsQOPIDVNavUB9A3gqD3+ZEh37P+9uIS2W4ejcqKj53bG9QwIPGY/ej1cwo88huTk8Mv04LXcLxedPEj0COU3aVIxN3D5Y74BwHOcMvl2hTKcz54hUr2j4tJ1JVz/eBg9QMpMkjhXn4XmxsZ80qbPqpDbAxOnqNXD5gzYhhYp+mzWTu6/enS/zBRbeb66oe5Y9KXFtXucf56IfU+3+OoI9xMhnu+mBnN12uFJ4ugn5mXl1F4jUeJSWqHcVQ=
+  file: $FRAMEWORK_NAME.framework.zip
+  skip_cleanup: true
+  on:
+    repo: scottrhoyt/$FRAMEWORK_NAME
+    tags: true
+    condition: $JOB = Xcode
