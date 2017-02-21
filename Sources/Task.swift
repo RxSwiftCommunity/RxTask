@@ -57,6 +57,9 @@ extension TaskEvent: Equatable {
 /// An error encountered in the execution of a `Task`.
 public enum TaskError: Error {
 
+    /// Cannot encode input `String` into `Data` (using UTF8)
+    case cannotEncodeInput(String)
+
     /// An uncaught signal was encountered.
     case uncaughtSignal
 
@@ -69,6 +72,8 @@ extension TaskError: Equatable {
     /// Equates two `TaskError`s.
     public static func == (lhs: TaskError, rhs: TaskError) -> Bool {
         switch (lhs, rhs) {
+        case let (.cannotEncodeInput(left), .cannotEncodeInput(right)):
+            return left == right
         case (.uncaughtSignal, .uncaughtSignal):
             return true
         case let (.exit(left), .exit(right)):
@@ -94,20 +99,32 @@ public struct Task {
     /// The environment to launch the task with. If `nil`, this will inherit from the parent process.
     let environment: [String: String]?
 
+    /// The `Observable` that supplies the `stdin`
+    let stdIn: Observable<String>?
+
+    private let disposeBag = DisposeBag()
+
     /**
      Create a new task.
 
      - parameters:
        - launchPath: The location of the executable.
        - arguments: The arguments to be passed to the executable.
+       - stdIn: The `Observable` that supplies `stdin`.
        - workingDirectory: The working directory of the task. If not used, this will inherit from the parent process.
        - environment: The environment to launch the task with. If not used, this will inherit from the parent process.
     */
-    public init(launchPath: String, arguments: [String] = [], workingDirectory: String? = nil, environment: [String: String]? = nil) {
+    public init(
+        launchPath: String,
+        arguments: [String] = [],
+        stdIn: Observable<String>? = nil,
+        workingDirectory: String? = nil,
+        environment: [String: String]? = nil) {
         self.launchPath = launchPath
         self.arguments = arguments
         self.workingDirectory = workingDirectory
         self.environment = environment
+        self.stdIn = stdIn
     }
 
     /// Launch the `Task`.
@@ -122,8 +139,12 @@ public struct Task {
         let command = ([launchPath] + arguments).joined(separator: " ")
 
         return Observable.create { observer in
-            process.standardOutput = self.pipe { observer.onNext(.stdOut($0)) }
-            process.standardError = self.pipe { observer.onNext(.stdErr($0)) }
+            process.standardOutput = self.outPipe { observer.onNext(.stdOut($0)) }
+            process.standardError = self.outPipe { observer.onNext(.stdErr($0)) }
+
+            if let stdIn = self.stdIn {
+                process.standardInput = self.inPipe(stdIn: stdIn, errorHandler: observer.onError)
+            }
 
             process.terminationHandler = self.terminationHandler(observer: observer)
 
@@ -156,7 +177,7 @@ public struct Task {
         }
     }
 
-    private func pipe(withHandler handler: @escaping (String) -> Void) -> Pipe {
+    private func outPipe(withHandler handler: @escaping (String) -> Void) -> Pipe {
         let pipe = Pipe()
 
         pipe.fileHandleForReading.readabilityHandler = { fileHandle in
@@ -164,6 +185,22 @@ public struct Task {
                 handler(string)
             }
         }
+
+        return pipe
+    }
+
+    private func inPipe(stdIn: Observable<String>, errorHandler: @escaping (Error) -> Void) -> Pipe {
+        let pipe = Pipe()
+
+        stdIn
+            .subscribe(onNext: { input in
+                guard let data = input.data(using: .utf8) else {
+                    errorHandler(TaskError.cannotEncodeInput(input))
+                    return
+                }
+                pipe.fileHandleForWriting.write(data)
+            })
+            .disposed(by: disposeBag)
 
         return pipe
     }
