@@ -3,6 +3,7 @@ An RxSwift implementation of a command line task runner.
 
 [![Build Status](https://travis-ci.org/scottrhoyt/RxTask.svg?branch=master)](https://travis-ci.org/scottrhoyt/RxTask)
 [![codecov](https://codecov.io/gh/scottrhoyt/RxTask/branch/master/graph/badge.svg)](https://codecov.io/gh/scottrhoyt/RxTask)
+[![docs](docs/badge.svg)](https://scottrhoyt.github.io/RxTask/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 ![Platform macOS](https://img.shields.io/badge/Platform-macOS-blue.svg)
@@ -105,4 +106,4 @@ Task(launchPath: "/bin/ls").launch()
 
 ## API Reference
 
-Full docs can be found [here](http://scottrhoyt.github.io/RxTask/).
+Full docs can be found [here](https://scottrhoyt.github.io/RxTask/).
