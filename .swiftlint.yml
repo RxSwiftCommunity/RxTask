@@ -1,0 +1,5 @@
+excluded:
+  - Carthage
+  - Packages
+
+line_length: 150
