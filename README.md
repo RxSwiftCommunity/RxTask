@@ -4,11 +4,11 @@ An [RxSwift](https://github.com/ReactiveX/RxSwift) implementation of a command l
 [![GitHub release](https://img.shields.io/github/release/scottrhoyt/RxTask.svg)]()
 [![Build Status](https://travis-ci.org/scottrhoyt/RxTask.svg?branch=master)](https://travis-ci.org/scottrhoyt/RxTask)
 [![codecov](https://codecov.io/gh/scottrhoyt/RxTask/branch/master/graph/badge.svg)](https://codecov.io/gh/scottrhoyt/RxTask)
-[![docs](/docs/badge.svg?raw=true)](https://scottrhoyt.github.io/RxTask/)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
-![Platform macOS](https://img.shields.io/badge/Platform-macOS-blue.svg)
-[![Language Swift 3.0](https://img.shields.io/badge/Language-Swift%203.0-orange.svg)](https://swift.org)
+[![docs](https://cdn.rawgit.com/scottrhoyt/RxTask/master/docs/badge.svg)](https://scottrhoyt.github.io/RxTask/)
+[![carthage compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![swift package manager compatible](https://img.shields.io/badge/spm-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
+![platform macOS](https://img.shields.io/badge/platform-macOS-blue.svg)
+[![language swift 3.0](https://img.shields.io/badge/language-Swift%203.0-orange.svg)](https://swift.org)
 
 ## Linux Compatibility
 
