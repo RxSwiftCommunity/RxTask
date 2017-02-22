@@ -48,8 +48,8 @@ Creating a task is as simple as providing a `launchPath` to the executable.
 let task = Task(launchPath: "/bin/ls")
 ```
 
-Optionally, you can provide `arguments`, a `workingDirectory`, an
-`environment`, and a `Observable<String>` for `stdin`.
+Optionally, you can provide `arguments`, a `workingDirectory`, and an
+`environment`.
 
 ```swift
 let task = Task(launchPath: "/bin/echo", arguments: ["$MESSAGE"], environment: ["MESSAGE": "Hello World!"])
@@ -78,7 +78,7 @@ events are:
 #### StdIn
 
 If you create a task that expects input, you can provide an `Observable<String>`
-for `stdin` when you are initializing the `Task`. Data will be written to
+for `stdin` when you are `launch()`ing the `Task`. Data will be written to
 `stdin` as soon as it is emitted by the `Observable`.
 
 #### Filtering TaskEvents
