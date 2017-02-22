@@ -136,8 +136,6 @@ public struct Task {
         if let workingDirectory = workingDirectory { process.currentDirectoryPath = workingDirectory }
         if let environment = environment { process.environment = environment }
 
-        let command = ([launchPath] + arguments).joined(separator: " ")
-
         return Observable.create { observer in
             process.standardOutput = self.outPipe { observer.onNext(.stdOut($0)) }
             process.standardError = self.outPipe { observer.onNext(.stdErr($0)) }
@@ -148,7 +146,7 @@ public struct Task {
 
             process.terminationHandler = self.terminationHandler(observer: observer)
 
-            observer.onNext(.launch(command: command))
+            observer.onNext(.launch(command: self.description))
             process.launch()
 
             return Disposables.create {
@@ -203,5 +201,11 @@ public struct Task {
             .disposed(by: disposeBag)
 
         return pipe
+    }
+}
+
+extension Task: CustomStringConvertible {
+    public var description: String {
+        return ([launchPath] + arguments).joined(separator: " ")
     }
 }
