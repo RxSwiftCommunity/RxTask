@@ -46,6 +46,6 @@ deploy:
   file: $FRAMEWORK_NAME.framework.zip
   skip_cleanup: true
   on:
-    repo: scottrhoyt/$FRAMEWORK_NAME
+    repo: RxSwiftCommunity/$FRAMEWORK_NAME
     tags: true
     condition: $JOB = Xcode
