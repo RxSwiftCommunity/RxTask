@@ -112,8 +112,9 @@ public struct Task {
         self.environment = environment
     }
 
-    /** 
+    /**
      Launch the `Task`.
+
      - parameter stdIn: An optional `Observable` to provide `stdin` for the process.
     */
     public func launch(stdIn: Observable<Data>? = nil) -> Observable<TaskEvent> {
