@@ -110,9 +110,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FV6RxTask4TaskcFT10launchPathSS9argumentsGSaSS_16workingDirectoryGSqSS_11environmentGSqGVs10DictionarySSSS___S0_"></a>
-                    <a name="//apple_ref/swift/Method/init(launchPath:arguments:workingDirectory:environment:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV6RxTask4TaskcFT10launchPathSS9argumentsGSaSS_16workingDirectoryGSqSS_11environmentGSqGVs10DictionarySSSS___S0_">init(launchPath:arguments:workingDirectory:environment:)</a>
+                    <a name="/s:FV6RxTask4TaskcFT10launchPathSS9argumentsGSaSS_5stdInGSqGC7RxSwift10ObservableSS__16workingDirectoryGSqSS_11environmentGSqGVs10DictionarySSSS___S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(launchPath:arguments:stdIn:workingDirectory:environment:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV6RxTask4TaskcFT10launchPathSS9argumentsGSaSS_5stdInGSqGC7RxSwift10ObservableSS__16workingDirectoryGSqSS_11environmentGSqGVs10DictionarySSSS___S0_">init(launchPath:arguments:stdIn:workingDirectory:environment:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -127,7 +127,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">launchPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">arguments</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span> <span class="nv">workingDirectory</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">environment</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
+        <span class="nv">launchPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+        <span class="nv">arguments</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="nv">stdIn</span><span class="p">:</span> <span class="kt">Observable</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+        <span class="nv">workingDirectory</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+        <span class="nv">environment</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -157,6 +162,19 @@
                               <td>
                                 <div>
                                   <p>The arguments to be passed to the executable.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stdIn</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>Observable</code> that supplies <code>stdin</code>.</p>
 
                                 </div>
                               </td>
