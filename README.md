@@ -48,8 +48,8 @@ Creating a task is as simple as providing a `launchPath` to the executable.
 let task = Task(launchPath: "/bin/ls")
 ```
 
-Optionally, you can provide `arguments`, a `workingDirectory`, and an
-`environment`.
+Optionally, you can provide `arguments`, a `workingDirectory`, an
+`environment`, and a `Observable<String>` for `stdin`.
 
 ```swift
 let task = Task(launchPath: "/bin/echo", arguments: ["$MESSAGE"], environment: ["MESSAGE": "Hello World!"])
@@ -74,6 +74,12 @@ events are:
 
 ** Note: ** Currently an event is only considered successful if it exits with a
 `statusCode` of 0. Other exit statuses will be considered a `TaskError`.
+
+#### StdIn
+
+If you create a task that expects input, you can provide an `Observable<String>`
+for `stdin` when you are initializing the `Task`. Data will be written to
+`stdin` as soon as it is emitted by the `Observable`.
 
 #### Filtering TaskEvents
 
@@ -104,6 +110,7 @@ Task(launchPath: "/bin/ls").launch()
 
 * `uncaughtSignal`: The `Task` terminated with an uncaught signal (e.g. `SIGINT`).
 * `exit(statusCode: Int)`: The `Task` exited with a non-zero exit code.
+* `cannotEncodeInput(String)`: The input string was unable to be encoded into `Data` using UTF8.
 
 ## API Reference
 

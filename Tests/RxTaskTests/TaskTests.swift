@@ -77,6 +77,29 @@ class TaskTests: XCTestCase {
         }
     }
 
+    func testStdIn() throws {
+        let script = try ScriptFile(commands: [
+                "read var1",
+                "echo $var1",
+                "sleep 0.1",
+                "read var2",
+                "echo $var2",
+                "sleep 0.1"
+            ])
+
+        let stdIn = Observable.of("hello\n", "world\n")
+
+        let events = try Task(launchPath: script.path, stdIn: stdIn).launch()
+            .toBlocking()
+            .toArray()
+
+        XCTAssertEqual(events.count, 4)
+        XCTAssertEqual(events[0], .launch(command: script.path))
+        XCTAssertEqual(events[1], .stdOut("hello\n"))
+        XCTAssertEqual(events[2], .stdOut("world\n"))
+        XCTAssertEqual(events[3], .exit(statusCode: 0))
+    }
+
     static var allTests: [(String, (TaskTests) -> () throws -> Void)] {
         return [
             ("testStdOut", testStdOut),
