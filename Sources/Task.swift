@@ -99,9 +99,6 @@ public struct Task {
     /// The environment to launch the task with. If `nil`, this will inherit from the parent process.
     let environment: [String: String]?
 
-    /// The `Observable` that supplies the `stdin`
-    let stdIn: Observable<String>?
-
     private let disposeBag = DisposeBag()
 
     /**
@@ -110,25 +107,21 @@ public struct Task {
      - parameters:
        - launchPath: The location of the executable.
        - arguments: The arguments to be passed to the executable.
-       - stdIn: The `Observable` that supplies `stdin`.
        - workingDirectory: The working directory of the task. If not used, this will inherit from the parent process.
        - environment: The environment to launch the task with. If not used, this will inherit from the parent process.
     */
-    public init(
-        launchPath: String,
-        arguments: [String] = [],
-        stdIn: Observable<String>? = nil,
-        workingDirectory: String? = nil,
-        environment: [String: String]? = nil) {
+    public init(launchPath: String, arguments: [String] = [], workingDirectory: String? = nil, environment: [String: String]? = nil) {
         self.launchPath = launchPath
         self.arguments = arguments
         self.workingDirectory = workingDirectory
         self.environment = environment
-        self.stdIn = stdIn
     }
 
-    /// Launch the `Task`.
-    public func launch() -> Observable<TaskEvent> {
+    /** 
+     Launch the `Task`.
+     - parameter stdIn: An optional `Observable` to provide `stdin` for the process.
+    */
+    public func launch(stdIn: Observable<String>? = nil) -> Observable<TaskEvent> {
         let process = Process()
         process.launchPath = self.launchPath
         process.arguments = self.arguments
@@ -140,7 +133,7 @@ public struct Task {
             process.standardOutput = self.outPipe { observer.onNext(.stdOut($0)) }
             process.standardError = self.outPipe { observer.onNext(.stdErr($0)) }
 
-            if let stdIn = self.stdIn {
+            if let stdIn = stdIn {
                 process.standardInput = self.inPipe(stdIn: stdIn, errorHandler: observer.onError)
             }
 

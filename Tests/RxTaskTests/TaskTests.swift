@@ -89,7 +89,8 @@ class TaskTests: XCTestCase {
 
         let stdIn = Observable.of("hello\n", "world\n")
 
-        let events = try Task(launchPath: script.path, stdIn: stdIn).launch()
+        let events = try Task(launchPath: script.path)
+            .launch(stdIn: stdIn)
             .toBlocking()
             .toArray()
 
