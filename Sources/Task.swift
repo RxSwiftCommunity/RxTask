@@ -115,7 +115,7 @@ public struct Task {
     /**
      Launch the `Task`.
 
-     - parameter stdIn: An optional `Observable` to provide `stdin` for the process.
+     - parameter stdIn: An optional `Observable` to provide `stdin` for the process. Defaults to `nil`.
     */
     public func launch(stdIn: Observable<Data>? = nil) -> Observable<TaskEvent> {
         let process = Process()
