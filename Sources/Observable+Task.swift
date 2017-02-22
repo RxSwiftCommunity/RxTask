@@ -16,7 +16,7 @@ public protocol TaskEventType {
     var exitStatus: Int? { get }
 
     /// The output of the event if available, `nil` otherwise.
-    var output: String? { get }
+    var output: Data? { get }
 }
 
 extension TaskEvent: TaskEventType {
@@ -32,7 +32,7 @@ extension TaskEvent: TaskEventType {
     }
 
     /// The output of the event if available, `nil` otherwise.
-    public var output: String? {
+    public var output: Data? {
         switch self {
         case .stdErr(let output), .stdOut(let output):
             return output
@@ -56,13 +56,13 @@ public extension Observable where Element: TaskEventType {
     }
 
     /// Filters out the launch and exit events to just produce and `Observable` of the output (`stdout` and `stderr`).
-    func justOutput() -> Observable<String> {
-        return flatMap { event -> Observable<String> in
+    func justOutput() -> Observable<Data> {
+        return flatMap { event -> Observable<Data> in
             guard let output = event.output else {
-                return Observable<String>.empty()
+                return Observable<Data>.empty()
             }
 
-            return Observable<String>.just(output)
+            return Observable<Data>.just(output)
         }
     }
 }

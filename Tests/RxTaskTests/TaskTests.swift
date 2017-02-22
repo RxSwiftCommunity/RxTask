@@ -22,7 +22,7 @@ class TaskTests: XCTestCase {
 
         XCTAssertEqual(events.count, 3)
         XCTAssertEqual(events[0], .launch(command: script.path))
-        XCTAssertEqual(events[1], .stdOut("hello world\n"))
+        XCTAssertEqual(events[1], .stdOut("hello world\n".data(using: .utf8)!))
         XCTAssertEqual(events[2], .exit(statusCode: 0))
     }
 
@@ -36,7 +36,7 @@ class TaskTests: XCTestCase {
 
         XCTAssertEqual(events.count, 3)
         XCTAssertEqual(events[0], .launch(command: script.path))
-        XCTAssertEqual(events[1], .stdErr("hello world\n"))
+        XCTAssertEqual(events[1], .stdErr("hello world\n".data(using: .utf8)!))
         XCTAssertEqual(events[2], .exit(statusCode: 0))
     }
 
@@ -87,7 +87,7 @@ class TaskTests: XCTestCase {
                 "sleep 0.1"
             ])
 
-        let stdIn = Observable.of("hello\n", "world\n")
+        let stdIn = Observable.of("hello\n", "world\n").map { $0.data(using: .utf8) ?? Data() }
 
         let events = try Task(launchPath: script.path)
             .launch(stdIn: stdIn)
@@ -96,8 +96,8 @@ class TaskTests: XCTestCase {
 
         XCTAssertEqual(events.count, 4)
         XCTAssertEqual(events[0], .launch(command: script.path))
-        XCTAssertEqual(events[1], .stdOut("hello\n"))
-        XCTAssertEqual(events[2], .stdOut("world\n"))
+        XCTAssertEqual(events[1], .stdOut("hello\n".data(using: .utf8)!))
+        XCTAssertEqual(events[2], .stdOut("world\n".data(using: .utf8)!))
         XCTAssertEqual(events[3], .exit(statusCode: 0))
     }
 
