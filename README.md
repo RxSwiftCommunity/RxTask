@@ -68,8 +68,8 @@ that is used to report significant events in the task lifetime. The possible
 events are:
 
 * `launch(command: String)`
-* `stdOut(String)`
-* `stdErr(String)`
+* `stdOut(Data)`
+* `stdErr(Data)`
 * `exit(statusCode: Int)`
 
 ** Note: ** Currently an event is only considered successful if it exits with a
@@ -77,7 +77,7 @@ events are:
 
 #### StdIn
 
-If you create a task that expects input, you can provide an `Observable<String>`
+If you create a task that expects input, you can provide an `Observable<Data>`
 for `stdin` when you are `launch()`ing the `Task`. Data will be written to
 `stdin` as soon as it is emitted by the `Observable`.
 
@@ -110,7 +110,6 @@ Task(launchPath: "/bin/ls").launch()
 
 * `uncaughtSignal`: The `Task` terminated with an uncaught signal (e.g. `SIGINT`).
 * `exit(statusCode: Int)`: The `Task` exited with a non-zero exit code.
-* `cannotEncodeInput(String)`: The input string was unable to be encoded into `Data` using UTF8.
 
 ## API Reference
 

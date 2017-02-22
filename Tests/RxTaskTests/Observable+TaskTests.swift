@@ -40,8 +40,8 @@ class ObservableTaskTests: XCTestCase {
             .toArray()
 
         XCTAssertEqual(exitStatus.count, 2)
-        XCTAssertEqual(exitStatus[0], "hello\n")
-        XCTAssertEqual(exitStatus[1], "world\n")
+        XCTAssertEqual(exitStatus[0], "hello\n".data(using: .utf8)!)
+        XCTAssertEqual(exitStatus[1], "world\n".data(using: .utf8)!)
     }
 
     static var allTests: [(String, (ObservableTaskTests) -> () throws -> Void)] {

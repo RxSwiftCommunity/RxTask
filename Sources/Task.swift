@@ -26,10 +26,10 @@ public enum TaskEvent {
     case launch(command: String)
 
     /// The `Task` has output to `stdout`.
-    case stdOut(String)
+    case stdOut(Data)
 
     /// The `Task` has output to `stderr`.
-    case stdErr(String)
+    case stdErr(Data)
 
     /// The `Task` exited successfully.
     case exit(statusCode: Int)
@@ -57,9 +57,6 @@ extension TaskEvent: Equatable {
 /// An error encountered in the execution of a `Task`.
 public enum TaskError: Error {
 
-    /// Cannot encode input `String` into `Data` (using UTF8)
-    case cannotEncodeInput(String)
-
     /// An uncaught signal was encountered.
     case uncaughtSignal
 
@@ -72,8 +69,6 @@ extension TaskError: Equatable {
     /// Equates two `TaskError`s.
     public static func == (lhs: TaskError, rhs: TaskError) -> Bool {
         switch (lhs, rhs) {
-        case let (.cannotEncodeInput(left), .cannotEncodeInput(right)):
-            return left == right
         case (.uncaughtSignal, .uncaughtSignal):
             return true
         case let (.exit(left), .exit(right)):
@@ -117,11 +112,12 @@ public struct Task {
         self.environment = environment
     }
 
-    /** 
+    /**
      Launch the `Task`.
-     - parameter stdIn: An optional `Observable` to provide `stdin` for the process.
+
+     - parameter stdIn: An optional `Observable` to provide `stdin` for the process. Defaults to `nil`.
     */
-    public func launch(stdIn: Observable<String>? = nil) -> Observable<TaskEvent> {
+    public func launch(stdIn: Observable<Data>? = nil) -> Observable<TaskEvent> {
         let process = Process()
         process.launchPath = self.launchPath
         process.arguments = self.arguments
@@ -168,29 +164,19 @@ public struct Task {
         }
     }
 
-    private func outPipe(withHandler handler: @escaping (String) -> Void) -> Pipe {
+    private func outPipe(withHandler handler: @escaping (Data) -> Void) -> Pipe {
         let pipe = Pipe()
 
-        pipe.fileHandleForReading.readabilityHandler = { fileHandle in
-            if let string = String(data: fileHandle.availableData, encoding: .utf8) {
-                handler(string)
-            }
-        }
+        pipe.fileHandleForReading.readabilityHandler = { handler($0.availableData) }
 
         return pipe
     }
 
-    private func inPipe(stdIn: Observable<String>, errorHandler: @escaping (Error) -> Void) -> Pipe {
+    private func inPipe(stdIn: Observable<Data>, errorHandler: @escaping (Error) -> Void) -> Pipe {
         let pipe = Pipe()
 
         stdIn
-            .subscribe(onNext: { input in
-                guard let data = input.data(using: .utf8) else {
-                    errorHandler(TaskError.cannotEncodeInput(input))
-                    return
-                }
-                pipe.fileHandleForWriting.write(data)
-            })
+            .subscribe(onNext: pipe.fileHandleForWriting.write)
             .disposed(by: disposeBag)
 
         return pipe
