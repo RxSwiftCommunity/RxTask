@@ -130,8 +130,8 @@ re-evaluated after the Swift 3.1 release. PRs in this area are quite welcome! ðŸ
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">task</span> <span class="o">=</span> <span class="kt">Task</span><span class="p">(</span><span class="nv">launchPath</span><span class="p">:</span> <span class="s">"/bin/ls"</span><span class="p">)</span>
 </code></pre>
 
-<p>Optionally, you can provide <code>arguments</code>, a <code>workingDirectory</code>, an
-<code>environment</code>, and a <code>Observable&lt;String&gt;</code> for <code>stdin</code>.</p>
+<p>Optionally, you can provide <code>arguments</code>, a <code>workingDirectory</code>, and an
+<code>environment</code>.</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">task</span> <span class="o">=</span> <span class="kt">Task</span><span class="p">(</span><span class="nv">launchPath</span><span class="p">:</span> <span class="s">"/bin/echo"</span><span class="p">,</span> <span class="nv">arguments</span><span class="p">:</span> <span class="p">[</span><span class="s">"$MESSAGE"</span><span class="p">],</span> <span class="nv">environment</span><span class="p">:</span> <span class="p">[</span><span class="s">"MESSAGE"</span><span class="p">:</span> <span class="s">"Hello World!"</span><span class="p">])</span>
 </code></pre>
 <a href='#launch-a-task' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='launch-a-task'>Launch A Task</h3>
@@ -157,7 +157,7 @@ events are:</p>
 <a href='#stdin' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='stdin'>StdIn</h4>
 
 <p>If you create a task that expects input, you can provide an <code>Observable&lt;String&gt;</code>
-for <code>stdin</code> when you are initializing the <code>Task</code>. Data will be written to
+for <code>stdin</code> when you are <code>launch()</code>ing the <code>Task</code>. Data will be written to
 <code>stdin</code> as soon as it is emitted by the <code>Observable</code>.</p>
 <a href='#filtering-taskevents' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='filtering-taskevents'>Filtering TaskEvents</h4>
 
