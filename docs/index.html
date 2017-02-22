@@ -147,8 +147,8 @@ events are:</p>
 
 <ul>
 <li><code>launch(command: String)</code></li>
-<li><code>stdOut(String)</code></li>
-<li><code>stdErr(String)</code></li>
+<li><code>stdOut(Data)</code></li>
+<li><code>stdErr(Data)</code></li>
 <li><code>exit(statusCode: Int)</code></li>
 </ul>
 
@@ -156,7 +156,7 @@ events are:</p>
 <code>statusCode</code> of 0. Other exit statuses will be considered a <code>TaskError</code>.</p>
 <a href='#stdin' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='stdin'>StdIn</h4>
 
-<p>If you create a task that expects input, you can provide an <code>Observable&lt;String&gt;</code>
+<p>If you create a task that expects input, you can provide an <code>Observable&lt;Data&gt;</code>
 for <code>stdin</code> when you are <code>launch()</code>ing the <code>Task</code>. Data will be written to
 <code>stdin</code> as soon as it is emitted by the <code>Observable</code>.</p>
 <a href='#filtering-taskevents' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='filtering-taskevents'>Filtering TaskEvents</h4>
@@ -184,7 +184,6 @@ the operator <code>justOutput()</code>. <em>This will send the output of both <c
 <ul>
 <li><code>uncaughtSignal</code>: The <code>Task</code> terminated with an uncaught signal (e.g. <code>SIGINT</code>).</li>
 <li><code>exit(statusCode: Int)</code>: The <code>Task</code> exited with a non-zero exit code.</li>
-<li><code>cannotEncodeInput(String)</code>: The input string was unable to be encoded into <code>Data</code> using UTF8.</li>
 </ul>
 <a href='#api-reference' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='api-reference'>API Reference</h2>
 
