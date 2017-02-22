@@ -1,6 +1,6 @@
 //
 //  Observable+Task.swift
-//  RxRunner
+//  RxTask
 //
 //  Created by Scott Hoyt on 2/20/17.
 //

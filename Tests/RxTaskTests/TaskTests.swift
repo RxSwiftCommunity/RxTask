@@ -1,3 +1,11 @@
+//
+//  TaskTests.swift
+//  RxTask
+//
+//  Created by Scott Hoyt on 2/20/17.
+//
+//
+
 import XCTest
 @testable import RxTask
 import RxSwift

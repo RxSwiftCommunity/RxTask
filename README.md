@@ -1,10 +1,10 @@
 # RxTask
 An [RxSwift](https://github.com/ReactiveX/RxSwift) implementation of a command line task runner.
 
-[![GitHub release](https://img.shields.io/github/release/scottrhoyt/RxTask.svg)]()
-[![Build Status](https://travis-ci.org/scottrhoyt/RxTask.svg?branch=master)](https://travis-ci.org/scottrhoyt/RxTask)
-[![codecov](https://codecov.io/gh/scottrhoyt/RxTask/branch/master/graph/badge.svg)](https://codecov.io/gh/scottrhoyt/RxTask)
-[![docs](https://cdn.rawgit.com/scottrhoyt/RxTask/master/docs/badge.svg)](https://scottrhoyt.github.io/RxTask/)
+[![GitHub release](https://img.shields.io/github/release/RxSwiftCommunity/RxTask.svg)]()
+[![Build Status](https://travis-ci.org/RxSwiftCommunity/RxTask.svg?branch=master)](https://travis-ci.org/RxSwiftCommunity/RxTask)
+[![codecov](https://codecov.io/gh/RxSwiftCommunity/RxTask/branch/master/graph/badge.svg)](https://codecov.io/gh/RxSwiftCommunity/RxTask)
+[![docs](https://cdn.rawgit.com/RxSwiftCommunity/RxTask/master/docs/badge.svg)](https://RxSwiftCommunity.github.io/RxTask/)
 [![carthage compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![swift package manager compatible](https://img.shields.io/badge/spm-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 ![platform macOS](https://img.shields.io/badge/platform-macOS-blue.svg)
@@ -21,7 +21,7 @@ re-evaluated after the Swift 3.1 release. PRs in this area are quite welcome! ðŸ
 ### Carthage
 
 ```shell
-github "scottrhoyt/RxTask"
+github "RxSwiftCommunity/RxTask"
 ```
 
 ### SPM
@@ -33,7 +33,7 @@ let package = Package(
     name: "YOUR_PROJECT_NAME",
     targets: [],
     dependencies: [
-        .Package(url: "https://github.com/scottrhoyt/RxSwift.git", majorVersion: 0)
+        .Package(url: "https://github.com/RxSwiftCommunity/RxSwift.git", majorVersion: 0)
     ]
 )
 ```
@@ -107,4 +107,4 @@ Task(launchPath: "/bin/ls").launch()
 
 ## API Reference
 
-Full docs can be found [here](https://scottrhoyt.github.io/RxTask/).
+Full docs can be found [here](https://RxSwiftCommunity.github.io/RxTask/).
