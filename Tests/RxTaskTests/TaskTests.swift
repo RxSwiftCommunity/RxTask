@@ -89,7 +89,8 @@ class TaskTests: XCTestCase {
 
         let stdIn = Observable.of("hello\n", "world\n")
 
-        let events = try Task(launchPath: script.path, stdIn: stdIn).launch()
+        let events = try Task(launchPath: script.path)
+            .launch(stdIn: stdIn)
             .toBlocking()
             .toArray()
 
@@ -98,6 +99,18 @@ class TaskTests: XCTestCase {
         XCTAssertEqual(events[1], .stdOut("hello\n"))
         XCTAssertEqual(events[2], .stdOut("world\n"))
         XCTAssertEqual(events[3], .exit(statusCode: 0))
+    }
+
+    func testTaskEquality() {
+        let task1 = Task(launchPath: "/bin/echo", arguments: ["$MESSAGE"], workingDirectory: "/", environment: ["MESSAGE": "Hello World!"])
+        let task2 = Task(launchPath: "/bin/echo", arguments: ["$MESSAGE"], workingDirectory: "/", environment: ["MESSAGE": "Hello World!"])
+        let task3 = Task(launchPath: "/bin/echo", arguments: ["$MESSAGE"], workingDirectory: "/")
+        let task4 = Task(launchPath: "/bin/echo", arguments: ["$MESSAGE"], workingDirectory: "/")
+
+        XCTAssertEqual(task1, task2)
+        XCTAssertEqual(task3, task4)
+
+        XCTAssertNotEqual(task1, task3)
     }
 
     static var allTests: [(String, (TaskTests) -> () throws -> Void)] {
