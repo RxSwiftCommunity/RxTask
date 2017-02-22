@@ -1,6 +1,6 @@
 //
 //  Runner.swift
-//  RxRunner
+//  RxTask
 //
 //  Created by Scott Hoyt on 2/18/17.
 //
@@ -96,7 +96,7 @@ public struct Task {
 
     /**
      Create a new task.
-     
+
      - parameters:
        - launchPath: The location of the executable.
        - arguments: The arguments to be passed to the executable.
