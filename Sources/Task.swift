@@ -198,7 +198,31 @@ public struct Task {
 }
 
 extension Task: CustomStringConvertible {
+
+    /// A `String` describing the `Task`.
     public var description: String {
         return ([launchPath] + arguments).joined(separator: " ")
+    }
+}
+
+extension Task: Equatable {
+
+    /// Whether or not two `Task`s are equal.
+    public static func == (lhs: Task, rhs: Task) -> Bool {
+        return lhs.launchPath == rhs.launchPath &&
+            lhs.arguments == rhs.arguments &&
+            lhs.workingDirectory == rhs.workingDirectory &&
+            envsEqual(lhs: lhs.environment, rhs: rhs.environment)
+    }
+
+    private static func envsEqual(lhs: [String: String]?, rhs: [String: String]?) -> Bool {
+        switch (lhs, rhs) {
+        case (nil, nil):
+            return true
+        case let (.some(left), .some(right)):
+            return left == right
+        default:
+            return false
+        }
     }
 }

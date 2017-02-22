@@ -101,6 +101,18 @@ class TaskTests: XCTestCase {
         XCTAssertEqual(events[3], .exit(statusCode: 0))
     }
 
+    func testTaskEquality() {
+        let task1 = Task(launchPath: "/bin/echo", arguments: ["$MESSAGE"], workingDirectory: "/", environment: ["MESSAGE": "Hello World!"])
+        let task2 = Task(launchPath: "/bin/echo", arguments: ["$MESSAGE"], workingDirectory: "/", environment: ["MESSAGE": "Hello World!"])
+        let task3 = Task(launchPath: "/bin/echo", arguments: ["$MESSAGE"], workingDirectory: "/")
+        let task4 = Task(launchPath: "/bin/echo", arguments: ["$MESSAGE"], workingDirectory: "/")
+
+        XCTAssertEqual(task1, task2)
+        XCTAssertEqual(task3, task4)
+
+        XCTAssertNotEqual(task1, task3)
+    }
+
     static var allTests: [(String, (TaskTests) -> () throws -> Void)] {
         return [
             ("testStdOut", testStdOut),
