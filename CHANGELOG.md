@@ -2,6 +2,20 @@
 
 ##### Breaking
 
+* None
+
+##### Enhancements
+
+* None
+
+##### Bug Fixes
+
+* None
+
+## 0.2.0
+
+##### Breaking
+
 * `stdin`, `stdout`, and `stderr` are now treated as raw `Data`.
   Encoding/Decoding is left to the user.
 
