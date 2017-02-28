@@ -72,7 +72,7 @@ events are:
 * `stdErr(Data)`
 * `exit(statusCode: Int)`
 
-** Note: ** Currently an event is only considered successful if it exits with a
+**Note:** Currently an event is only considered successful if it exits with a
 `statusCode` of 0. Other exit statuses will be considered a `TaskError`.
 
 #### StdIn
